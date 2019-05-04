@@ -61,6 +61,7 @@ public class Hand {
 			case King: total = total + 10; break;
 			case Ace : numAces = numAces + 1; break;
 			}
+		}
 		for (int i = 0; i < numAces; i++) {
 			if (total > 10) {
 				total = total + 1;
@@ -68,7 +69,6 @@ public class Hand {
 				total = total + 11;
 			}
 		}
-	}
 		return total;
 	}
 }
