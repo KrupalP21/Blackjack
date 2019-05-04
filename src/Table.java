@@ -1,16 +1,28 @@
-
-
 public class Table {
+	
 	private double playerMoney;
 	private double betAmount;
 	private Hand playerHand = new Hand();
 	private Hand dealerHand = new Hand();
+	private Deck deck = new Deck();
 	
-	public Table(double playerMoney, double betAmount, Hand playerHand, Hand dealerHand) {
+	public Table(double playerMoney, double betAmount, Hand playerHand, Hand dealerHand, Deck deck) {
 		this.playerMoney = playerMoney;
 		this.betAmount = betAmount;
 		this.playerHand = playerHand;
 		this.dealerHand = dealerHand;
+		this.deck = deck;
+	}
+	
+	public static void initializeGame(Deck deck, Hand playerHand, Hand dealerHand) {	
+	    // Create the Deck for new game and shuffle contents
+		deck.createDeck();
+		deck.shuffleDeck();
+		// Deal a hand to the player and dealer
+		playerHand.addCard(deck.pickCard());
+		playerHand.addCard(deck.pickCard());
+		dealerHand.addCard(deck.pickCard());
+		dealerHand.addCard(deck.pickCard());
 	}
  	
 	public static void intro() {
