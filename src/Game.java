@@ -5,6 +5,7 @@ public class Game {
 		
 		Scanner s = new Scanner(System.in); 	
 		
+		// booleans to keep track of game logic
 		boolean hit = false; 
 		boolean currentGame = true;				
 		boolean doubleDown = false; 			
@@ -35,19 +36,11 @@ public class Game {
 			betAmount = 10;
 			splitHands = 3;
 			
-			// Create the Deck for new game and shuffle contents
 			Deck deck = new Deck();
-			deck.createDeck();
-			deck.shuffleDeck();
-			
-			// Deal a hand to the player and dealer
 			Hand playerHand = new Hand();
 			Hand dealerHand = new Hand();
-			playerHand.addCard(deck.pickCard());
-			playerHand.addCard(deck.pickCard());
-			dealerHand.addCard(deck.pickCard());
-			dealerHand.addCard(deck.pickCard());
 			
+			Table.initializeGame(deck, playerHand, dealerHand);
 			
 			System.out.println();
 			System.out.println("Your Cards are: ");
@@ -60,6 +53,7 @@ public class Game {
 			Table.menu();
 			int choice = s.nextInt();		
 			
+			// GAME LOGIC
 			if (choice == 4) { // Player chooses to SPLIT
 				split = true;
 				splitHands = 2;
